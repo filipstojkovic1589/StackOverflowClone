@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+<head>
+    <meta charset="utf-8"/>
+    <title>${title}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="${asset:context:/favicon.ico}"/>
+
+    <!-- CUSTOM PART BEGIN -->
+
+    <link rel="stylesheet" href="${asset:context:bootstrap/css/bootstrap.min.css}"></link>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="${asset:context:bootstrap/css/bootstrap-theme.min.css}"></link>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="${asset:context:bootstrap/js/bootstrap.min.js}"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="${asset:context:css/style.css}"></link>
+
+    <!-- CUSTOM PART END -->
+
+</head>
+
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+	    <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- <t:pagelink page="index" class="navbar-brand">app</t:pagelink> -->
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <t:pagelink page="index">Questions</t:pagelink>
+                </li>
+                <li>
+                    <t:pagelink page="ask/advice">Ask Question</t:pagelink>
+                </li>
+                <li>
+                    <t:pagelink page="search">Search</t:pagelink>
+                </li>
+            </ul>
+            
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <t:alerts/>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- CUSTOM PART BEGIN -->
+
+
+<img src="${asset:context:images/logo.png}" alt="stackoverflow logo" title="stackoverflow logo"/>
+
+    <div class="container-fluid">
+        
+        <div class="row">
+            <div class="col-sm-6">
+                <img src="${asset:context:images/logo.png}" alt="stackoverflow logo" title="stackoverflow logo"/>
+            </div>
+            <div class="col-sm-6 sub-header-nav-bar">
+                <ul>
+                    <li>
+                        <t:pagelink page="index">Questions</t:pagelink>
+                    </li>
+                    <li>
+                        <t:pagelink page="ask/advice">Ask Question</t:pagelink>
+                    </li>
+                    <li>
+                        <t:pagelink page="search">Search</t:pagelink>
+                    </li>
+                    <li>
+                        <t:pagelink page="register">Register</t:pagelink>
+                    </li>
+                    <t:if test="!loggedIn">
+                        <li>
+                            <t:pagelink page="login">Sign in</t:pagelink>
+                        </li>
+                    </t:if>
+                    <t:if test="loggedIn">
+                        <li>
+                            <t:actionlink t:id="logout">Logout</t:actionlink>
+                        </li>
+                    </t:if>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="sub-header-message">
+                    Ten. Million. Questions. Let's celebrate all we've done together.
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+
+
+
+
+    <!-- CUSTOM PART END -->
+    
+
+    <t:body />
+
+    <hr />
+
+    <footer>
+        <p>site design / logo &copy; 2015 Stack Exchange Inc; user contributions licensed under cc by-sa 3.0 with attribution required</p>
+    </footer>
+
+</div> <!-- /container -->
+
+</body>
+</html>

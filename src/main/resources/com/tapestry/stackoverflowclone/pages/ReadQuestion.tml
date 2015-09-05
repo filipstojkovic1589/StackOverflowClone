@@ -1,0 +1,58 @@
+<html t:type="layout" title="Question"
+    xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+    xmlns:p="tapestry:parameter">
+ 
+    <div class="container-fluid">
+        <div class="row question-text">
+            <div class="col-sm-11">
+            
+                <h3>${question.questioncaption}</h3>
+                <div class="leaderboard"></div>
+                <p>${question.questiontext}</p>
+                <div class="answer-list-author">
+                    asked ${question.questiondate} by ${question.userid.username}
+                </div>
+                <h4>${answercount} Answers</h4>
+            </div>
+            <div class="col-sm-1">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-11 answer-list">
+            
+                <ul t:type="Loop" t:source="answers" t:value="oneanswer">
+                    <li class="answer-list-text">${oneanswer.answerText}</li>
+                    <li class="answer-list-author">
+                        answered ${oneanswer.answerdate} by ${oneuser}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-1">
+            </div>
+        </div>
+
+
+        <div class="row">        
+            <div class="col-sm-11 answer-post">
+                <t:if test="!loggedIn">
+                    <h3>You need to be <t:pagelink page="login">logged in</t:pagelink> to post an answer!</h3>
+                </t:if>
+                <t:if test="loggedIn">
+                    <h4>Your Answer</h4>
+                    
+                    <t:form>
+                        <t:textarea style="height:100px;" t:value="newanswer.answertext" t:id="answertext" />
+                        
+                        <input class="btn btn-default navbar-btn" type="submit" value="Update User"/>
+                    </t:form>
+
+                </t:if>  
+            </div>
+            
+            <div class="col-sm-1">
+            </div>
+        </div>
+
+    </div>
+</html>

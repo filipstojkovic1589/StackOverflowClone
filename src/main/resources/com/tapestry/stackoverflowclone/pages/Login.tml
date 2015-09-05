@@ -1,0 +1,28 @@
+<html t:type="layout" title="Login"
+    xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+    xmlns:p="tapestry:parameter">
+ 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <h4>
+                    Login:
+                </h4>
+                <h5>
+                    In order to post new questions or answers, you need to be logged in.
+                    <br/>
+                    If you don't have accout, you can register using the link above.
+                </h5>
+
+                <t:beaneditform t:id="form" object="userLogin" submitlabel="Login" exclude="userid,userfacebookid,username,userrole">
+                    <t:errors/>
+                    <p:userPassword>
+                        <t:label for="userPassword"/>
+                        <t:passwordfield t:id="userPassword" value="userLogin.userPassword"/>
+                    </p:userPassword>
+                </t:beaneditform>
+            </div>
+        </div>
+    </div>
+</html>

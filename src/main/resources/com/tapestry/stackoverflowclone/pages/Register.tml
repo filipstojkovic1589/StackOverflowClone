@@ -1,0 +1,21 @@
+<html t:type="layout" title="Add Question"
+    t:sidebarTitle="Framework Version"
+    xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+    xmlns:p="tapestry:parameter">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+            
+                <h4>
+                    Register as new user:
+                </h4>
+
+                <t:beaneditform t:id="form" object="user" exclude="userId,userRole,userFacebookId">
+                    <t:errors/>
+                </t:beaneditform>
+            </div>
+        </div>
+    </div>
+    
+</html>
