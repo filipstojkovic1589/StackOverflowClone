@@ -40,6 +40,17 @@ public class AnswerDaoImpl implements AnswerDao {
 
     @Override
     public void addAnswer(Answer answer) {
-        session.persist(answer);
+        session.merge(answer);
+    }
+
+    @Override
+    public void removeAnswer(Integer id) {
+        Answer answer = (Answer)session.createCriteria(Answer.class).add(Restrictions.eq("answerId", id)).uniqueResult();
+        session.delete(answer);
+    }
+
+    @Override
+    public Answer getAnswerById(Integer id) {
+        return (Answer) session.createCriteria(Answer.class).add(Restrictions.eq("answerId", id)).uniqueResult();
     }
 }

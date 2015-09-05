@@ -9,6 +9,11 @@
                 <h3>${question.questioncaption}</h3>
                 <div class="leaderboard"></div>
                 <p>${question.questiontext}</p>
+                    <t:if test="myQuestion">
+                        <div class="answer-list-action-link">
+                            <t:actionlink t:id="deleteQuestion" context="question.questionid" t:mixins="Confirm">remove</t:actionlink>
+                        </div>
+                    </t:if>
                 <div class="answer-list-author">
                     asked ${question.questiondate} by ${question.userid.username}
                 </div>
@@ -23,6 +28,11 @@
             
                 <ul t:type="Loop" t:source="answers" t:value="oneanswer">
                     <li class="answer-list-text">${oneanswer.answerText}</li>
+                    <t:if test="myAnswer">
+                        <li class="answer-list-action-link">
+                            <t:actionlink t:id="delete" context="oneanswer.answerid" t:mixins="Confirm">remove</t:actionlink>
+                        </li>
+                    </t:if>
                     <li class="answer-list-author">
                         answered ${oneanswer.answerdate} by ${oneuser}
                     </li>

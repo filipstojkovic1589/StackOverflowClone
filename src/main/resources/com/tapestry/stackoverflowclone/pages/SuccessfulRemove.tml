@@ -1,0 +1,19 @@
+<html t:type="layout" title="Not found StackOverflowClone"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+
+    <head>
+        <meta http-equiv="refresh" content="3;url=index" />
+    </head>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Your question was successfully removed.</h1>
+                <h2>All related answers were also removed.</h2>
+                <h2>You will be automaticly redirected in few seconds...</h2>
+            </div>
+        </div>
+    </div>
+
+</html>

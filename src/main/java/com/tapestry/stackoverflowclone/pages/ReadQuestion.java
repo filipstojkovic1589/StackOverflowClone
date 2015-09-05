@@ -11,13 +11,18 @@ import com.tapestry.stackoverflowclone.dao.UserDao;
 import com.tapestry.stackoverflowclone.entities.Answer;
 import com.tapestry.stackoverflowclone.entities.Question;
 import com.tapestry.stackoverflowclone.entities.User;
+import java.net.URISyntaxException;
 import java.util.Date;
 import java.util.List;
+import javax.ws.rs.core.Response;
+import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.services.ajax.AjaxResponseRenderer;
+import org.got5.tapestry5.jquery.components.InPlaceEditor;
 
 /**
  *
@@ -47,6 +52,9 @@ public class ReadQuestion {
     
     @Inject 
     private UserDao userDao;
+    
+    @Inject
+    private AjaxResponseRenderer ajaxResponseRenderer;
 
     void onActivate() {
         newanswer = new Answer();
@@ -75,6 +83,43 @@ public class ReadQuestion {
     }
     
     @CommitAfter
+    Object onActionFromDelete(int id)
+    {
+        answerDao.removeAnswer(id);
+        return this;
+    }
+    
+    @CommitAfter
+    Object onActionFromDeleteQuestion(int id)
+    {
+        for (Answer a : answerDao.getAnswersByQuestion(question)) {
+            answerDao.removeAnswer(a.getAnswerId());
+        }
+        questionDao.removeQuestion(id);
+        
+        
+        return SuccessfulRemove.class;
+    }    
+    
+    public boolean getMyAnswer(){
+        if(getLoggedIn()){
+            if(oneanswer.getAnswerAuthorId() == loggedInUser.getUserId()){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean getMyQuestion(){
+        if(getLoggedIn()){
+            if(question.getUserId().getUserId() == loggedInUser.getUserId()){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    @CommitAfter
     Object onSuccess() {
         newanswer.setAnswerAuthorId(loggedInUser.getUserId());
         newanswer.setAnswerDate(new Date());
@@ -82,4 +127,13 @@ public class ReadQuestion {
         answerDao.addAnswer(newanswer);      
         return this;
     }
+  
+    //@CommitAfter
+    //@OnEvent(component = "imeDrzave", value = InPlaceEditor.SAVE_EVENT)
+    //void setImeDrzave(Long id, String value) {
+    //    Answer answer = (Answer) answerDao.getDrzavaById(id.intValue());
+    //    drzava.setImeDrzave(value);
+    //    System.out.println("cuvam drzavu");
+    //    gradDrzaveDao.dodajIliUpdatujDrzava(drzava);
+    //}
 }

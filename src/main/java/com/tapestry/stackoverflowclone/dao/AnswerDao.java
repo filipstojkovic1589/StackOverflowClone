@@ -18,4 +18,6 @@ public interface AnswerDao {
     public List<Answer> getAnswersByQuestion(Question question);
     public int allActiveSizeAnswerForQuestion(Question q);
     public void addAnswer(Answer answer);
+    public void removeAnswer(Integer id);
+    public Answer getAnswerById(Integer id);
 }

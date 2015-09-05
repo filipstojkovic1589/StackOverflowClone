@@ -106,3 +106,22 @@ answer-post t:textarea{
     text-shadow: none;
     color:white;
 }
+
+.question-list-caption{
+    margin-top:15px;
+}
+
+.question-list-author{
+    color: #858D93; 
+    text-align:right;
+    margin-top: 5px;
+    margin-bottom: 7px;
+}
+
+.answer-list-action-link {
+    margin-top: 15px;
+    color: #282828;
+}
+.answer-list-action-link a{
+    color: #858D93; 
+}

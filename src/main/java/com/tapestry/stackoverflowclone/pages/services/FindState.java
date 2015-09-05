@@ -40,10 +40,14 @@ public class FindState {
         }
         questions = questionDao.getQuestionByQuery(query);
         String response = 
-                "<h4>"
+                "<div class=\"row\">"
+                + "<div class=\"col-sm-12\">"
+                + "<h4>"
                 + questions.size()
                 + " results"
-                + "</h4>";
+                + "</h4>"
+                + "</div>"
+                + "</div>";
         for (Question q : questions) {
             response += (
                     "<div class=\"row\" style=\"border-top: 1px solid #ccc;\">"
@@ -54,18 +58,20 @@ public class FindState {
                     + "<div>"
                     + "<h4 style=\"color:#49B7FD\">" 
                     
+                    + "<div class=\"question-list-caption\">"
                     + "<a href=\"rest/readquestion/" + q.getQuestionId() +"\">"
                     
                     + "Q: " + q.getQuestionCaption() 
                     
                     + "</a>"
+                    + "</div>"
                     
                     + "</h4>"
                     + "</div>"
                     + "<div>"
                     + q.getQuestionText()
                     + "</div>"
-                    + "<div style=\"color: #858D93; text-align:right\">"
+                    + "<div class=\"question-list-author\">"
                     + "asked " + q.getQuestionDate() + " by " + q.getUserId().getUserName()
                     + "</div>"
                     + "</div>"
