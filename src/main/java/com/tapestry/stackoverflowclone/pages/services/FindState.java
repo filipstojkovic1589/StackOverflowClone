@@ -34,6 +34,9 @@ public class FindState {
     @Inject
     private AnswerDao answerDao;
 
+    /**
+     * Dynamically creates HTML structure and fills it with Questions.
+     */
     Object onActivate(@RequestParameter("questionCaption") String query) {
         if (questions == null) {
             questions = new ArrayList<Question>();

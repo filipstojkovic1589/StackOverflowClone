@@ -21,34 +21,52 @@ public class AnswerDaoImpl implements AnswerDao {
 
     @Inject
     private Session session;
-    
-    @Override
-    public List<Answer> getAllAnswers() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
+    /**
+     * Returns List of all Answer, for the passed Question.
+     * @param question
+     * @return
+     */
     @Override
     public List<Answer> getAnswersByQuestion(Question question) {
         return session.createCriteria(Answer.class).add(Restrictions.eq("questionId", question)).list();
     }
     
+    /**
+     * Returns size of the List of all Questions, for the passed Question.
+     * @param q
+     * @return
+     */
     @Override
     public int allActiveSizeAnswerForQuestion(Question q) {
         List<Question> questions = session.createCriteria(Answer.class).add(Restrictions.eq("questionId", q)).list();
         return questions.size();
     }
 
+    /**
+     * Merges new Answer.
+     * @param answer
+     */
     @Override
     public void addAnswer(Answer answer) {
         session.merge(answer);
     }
 
+    /**
+     * Removes Answer that has passed id.
+     * @param id
+     */
     @Override
     public void removeAnswer(Integer id) {
         Answer answer = (Answer)session.createCriteria(Answer.class).add(Restrictions.eq("answerId", id)).uniqueResult();
         session.delete(answer);
     }
 
+    /**
+     * Returns Answer that has passed id.
+     * @param id
+     * @return
+     */
     @Override
     public Answer getAnswerById(Integer id) {
         return (Answer) session.createCriteria(Answer.class).add(Restrictions.eq("answerId", id)).uniqueResult();

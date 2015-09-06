@@ -31,6 +31,11 @@ public class Register {
     @Component
     private BeanEditForm form;
 
+    /**
+     * Returns hash value for the passed string.
+     * @param yourString
+     * @return
+     */
     public String getMD5Hash(String yourString) {
         try {
             java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");

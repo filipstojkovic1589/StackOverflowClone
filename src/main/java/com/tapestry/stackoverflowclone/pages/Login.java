@@ -8,6 +8,10 @@ import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.corelib.components.BeanEditForm;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
+/**
+ *
+ * @author filip
+ */
 public class Login {
 
     @Inject
@@ -26,6 +30,11 @@ public class Login {
         return null;
     }
 
+    /**
+     * Returns hash value for the passed string.
+     * @param yourString
+     * @return
+     */
     public String getMD5Hash(String yourString) {
         try {
             java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");

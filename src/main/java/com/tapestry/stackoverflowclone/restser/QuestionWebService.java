@@ -17,6 +17,12 @@ import javax.ws.rs.core.Response;
 @Path("/readquestion")
 public class QuestionWebService implements QuestionWebServiceInterface{
 
+    /**
+     * Web service function.
+     * Takes passed id, and redirects to the new page and sends id again.
+     * @param id
+     * @return
+     */
     @Override
     public Object getQuestion(@PathParam("id") Integer id) {   
         java.net.URI location = null;

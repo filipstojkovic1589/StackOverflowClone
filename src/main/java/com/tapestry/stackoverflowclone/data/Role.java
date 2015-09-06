@@ -10,5 +10,14 @@ package com.tapestry.stackoverflowclone.data;
  * @author filip
  */
 public enum Role {
-    Admin,User
+
+    /**
+     * Admin user, has the most privileges.
+     */
+    Admin,
+
+    /**
+     * Standard user, limited privileges.
+     */
+    User
 }

@@ -14,7 +14,6 @@ import java.util.List;
  * @author filip
  */
 public interface AnswerDao {
-    public List<Answer> getAllAnswers();
     public List<Answer> getAnswersByQuestion(Question question);
     public int allActiveSizeAnswerForQuestion(Question q);
     public void addAnswer(Answer answer);

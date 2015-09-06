@@ -21,16 +21,32 @@ public class UserDaoImpl implements UserDao{
     @Inject
     private Session session;
     
+    /**
+     * Returns List of all Users.
+     * @return
+     */
     @Override
     public List<User> getAllUsers() {
         return session.createCriteria(User.class).list();
     }
 
+    /**
+     * Returns User for the passed id.
+     * @param id
+     * @return
+     */
     @Override
     public User getUserById(Integer id) {
         return (User) session.createCriteria(User.class).add(Restrictions.eq("userId",id)).uniqueResult();
     }
     
+    /**
+     * Check if there is user who contains passed email and password.
+     * Return him if exists, null if doesn't.
+     * @param email
+     * @param password
+     * @return
+     */
     @Override
     public User checkUser(String email, String password) {
         try {
@@ -45,6 +61,11 @@ public class UserDaoImpl implements UserDao{
         }
     }
     
+    /**
+     * Returns true if there is User who has passed email.
+     * @param email
+     * @return
+     */
     @Override
     public boolean checkIfEmailExists(String email) {
         Long rows = (Long) session.createCriteria(User.class).add(Restrictions.eq("userEmail",
@@ -52,6 +73,11 @@ public class UserDaoImpl implements UserDao{
         return (rows == 0) ? false : true;
     }
  
+    /**
+     * Adds new User, and then return his object.
+     * @param user
+     * @return
+     */
     @Override
     public User registerUser(User user) {
         return (User) session.merge(user);

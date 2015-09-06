@@ -27,6 +27,9 @@ public class PaginationGrid {
     @Inject
     private AnswerDao answerDao;
 
+    /**
+     * Dynamically creates HTML structure and fills it with Questions.
+     */
     Object onActivate(@RequestParameter("page") int page) {
         Class<?> act = null;
         int sizeOfAll = questionDao.allActiveSizeQuestions();
